@@ -1,0 +1,41 @@
+#block-block-3{
+  width: 480px;
+  margin: 0 auto;
+  padding: 60px 0 40px 0;
+  text-align: center;
+}
+.banner-top-wrapper:after{
+  clear: both;
+  content: "";
+  display: block;
+}
+.banner-top-bar{
+  width: 40%;
+  float: left;
+  height: 20px;
+  border-bottom: 7px solid white;
+}
+.banner-top-logo{
+  float: left;
+  width: 20%;
+}
+.banner-top-logo img{
+  width: 40px;
+}
+.banner-content{
+  clear: both;
+  border-bottom: 7px solid white;
+}
+
+body.front #page-title{
+  display: hidden;
+}
+
+
+/* slideshow */
+#views_slideshow_cycle_main_home_master-default .views-field-field-photo img{
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; /* future proofing */
+  -khtml-border-radius: 50%; /* for old Konqueror browsers */
+}

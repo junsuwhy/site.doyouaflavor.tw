@@ -1,0 +1,49 @@
+.region-header{
+  background: #ddd; 
+}
+
+#main{
+  padding: 0;
+}
+
+.navigation-wrapper{
+  position: relative;
+}
+@media (min-width: 480px){
+  #navigation{
+    position: initial;
+  }
+}
+.pane-carousel{
+  background: #ddd; 
+}
+.pane-block-1{
+  background: #ccc;  
+}
+.pane-block-2{
+  background: #bbb;   
+}
+.pane-home-master{
+  background: #aaa; 
+}
+.pane-home-products{
+  background: #acd; 
+}
+.region-footer{
+ background: #000;  
+ color: white;
+}
+
+h2.pane-title{
+  margin: 0;
+}
+
+/* front */
+.views-slideshow-controls-top{
+  width: 40px;
+  z-index: 99999;
+  float: left;
+}
+.views_slideshow_cycle_main{
+  margin-left: 40px;
+}
