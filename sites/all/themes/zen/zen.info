@@ -6,6 +6,7 @@ core        = 7.x
 engine      = phptemplate
 
 stylesheets[all][] = system.menus.css
+scripts[] = js/custom.js
 
 regions[header]         = Header
 regions[navigation]     = Navigation bar
