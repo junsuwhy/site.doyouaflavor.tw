@@ -10,8 +10,12 @@ body #page{
   width: 630px;
   margin: 0 auto;
 }
+#block-block-4{
+  width: 720px;
+  margin: 0 auto;
+}
 body .pane-home-master{
-  background: -webkit-linear-gradient(left, black 50%, white 50%);
+  background: -webkit-linear-gradient(left, black 55%, white 55%);
   margin: 150px 0;
   width: 100%;
 }
@@ -55,11 +59,14 @@ h2.pane-title{
 }
 
 /* front */
-.views-slideshow-controls-top{
-  width: 40px;
-  z-index: 99999;
-  float: left;
+.pane-block-1{
+  margin-top:40px;
 }
-.views_slideshow_cycle_main{
-  margin-left: 40px;
+.pane-block-2{
+  margin-top: 80px;
+}
+
+body #footer{
+  width: 100%;
+  padding-top: 40px;
 }

@@ -53,12 +53,18 @@ body.front #page-title{
 
 /* slideshow1 */
 .pane-carousel{
-  width: 690px;
+  width: 750px;
   margin: 0 auto;
 }
+.pane-carousel img{
+  padding-right: 60px;
+}
+
+
 
 .pane-block-2 img{
   float: left;
+  padding: 0 50px  60px 0;
 }
 
 /* slideshow */
@@ -66,9 +72,14 @@ body.front #page-title{
 .pane-home-master .views-field-nothing-1 a{
   /*background: #000;*/
   color: white;
-  width: 45%;
-  float:left;
 }
+.pane-home-master .views-field-nothing-1{
+  width: 300px;
+  float:left;
+  padding: 40px 0;
+  padding-right: 150px;
+}
+
 .pane-home-master .views-field-nothing-1 div{
   clear: both;
 }
@@ -76,7 +87,9 @@ body.front #page-title{
   display: none;
 }*/
 .pane-home-master .views-field-field-photo{
-  margin-left: 100px;
+  /*margin-left: 100px;*/
+  padding-top:50px;
+
 }
 .pane-home-master .views-field-field-photo img,
 .pane-home-products .views-field-field-image img{
@@ -85,11 +98,34 @@ body.front #page-title{
   border-radius: 50%; /* future proofing */
   -khtml-border-radius: 50%; /* for old Konqueror browsers */
 }
+.pane-home-master .slick-dots{
+  margin-left:100px;
+}
 .pane-home-master .slick-dots>li button:before{
   color: white;
 }
 
+.pane-home-master .views-label-field-duration:after,
+.pane-home-master .views-label-field-position:after{
+  content:"/";
+}
+.pane-home-master .views-field-view-node{
+  margin-top: 20px;
+}
 
+.pane-home-products{
+  background: url(/sites/all/themes/zen/img/bg-road.png);
+}
+.pane-home-products .pane-title,
+.pane-home-products .view-header{
+  margin-left: 165px;
+}
+.pane-home-products .pane-title{
+  padding-top: 120px;
+}
+.pane-home-products .view-content{
+  margin: 0 80px;
+}
 
 .pane-home-products .views-row{
   /*float: left;*/
