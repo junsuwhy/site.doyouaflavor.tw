@@ -1,3 +1,64 @@
 #logo img{
-  width: 40px;
+  width: 30px;
+  margin: 38px 0 0 220px;
+}
+@media (min-width: 480px){
+  body #navigation{
+    background: url(/sites/all/themes/zen/img/curve.png) repeat-x;
+    width: 630px;
+    position: initial;
+    margin: 20px auto;
+    margin-bottom: 0;
+    height: 100px;
+    padding: 30px 0;
+  }  
+}
+#navigation ul.links>li{
+  margin-right: 40px;
+  padding: 0;
+}
+#navigation ul.links>li.active{
+  border-bottom: black solid 4px;
+}
+/*#navigation a,
+#navigation a:hover,
+#navigation a:active{
+  color: black;
+  text-decoration:none;
+}*/
+.navigation-wrapper:after{
+  clear: both;
+  content: "";
+  display: block;
+}
+
+
+/**
+ * slideshow
+ */
+
+.slick-dots{
+  width: 30px;
+  float: left;
+  padding: 0;
+}
+.slick-dots>li{
+  list-style-type: none;
+}
+.slick-dots>li button{
+  border: none;
+  background: transparent;
+  line-height: 30px;
+  width: 30px;
+  height:30px;
+  overflow: hidden;
+}
+.slick-dots>li button:before{
+  content: "○";
+  font-family: serif;
+  font-size: 11px
+}
+.slick-dots>li.slick-active button:before{
+  content: "●";
+  font-family: serif;
 }

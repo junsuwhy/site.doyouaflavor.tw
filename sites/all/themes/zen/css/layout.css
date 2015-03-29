@@ -1,8 +1,38 @@
+body #page{
+  max-width: 100%;
+  /*margin: 0 auto;*/
+}
+.panel-pane,.region{
+  width: 960px;
+  margin: 0 auto;
+}
+.pane-block-1,.pane-block-2{
+  width: 630px;
+  margin: 0 auto;
+}
+body .pane-home-master{
+  background: -webkit-linear-gradient(left, black 50%, white 50%);
+  margin: 150px 0;
+  width: 100%;
+}
+body .pane-home-master>div{
+  width: 960px;
+  margin: 0 auto;
+}
+body #header, 
+body #content, 
+body #navigation, 
+body .region-sidebar-first, 
+body .region-sidebar-second, 
+body #footer{
+  padding: 0;
+}
+
 .region-header{
   background: #ddd; 
 }
 
-#main{
+#page #main{
   padding: 0;
 }
 
@@ -14,21 +44,7 @@
     position: initial;
   }
 }
-.pane-carousel{
-  background: #ddd; 
-}
-.pane-block-1{
-  background: #ccc;  
-}
-.pane-block-2{
-  background: #bbb;   
-}
-.pane-home-master{
-  background: #aaa; 
-}
-.pane-home-products{
-  background: #acd; 
-}
+
 .region-footer{
  background: #000;  
  color: white;

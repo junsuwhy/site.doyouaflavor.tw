@@ -1,41 +1,105 @@
+.region-header{
+  background: url(/sites/all/themes/zen/img/banner.png);
+}
+
 #block-block-3{
   width: 480px;
   margin: 0 auto;
-  padding: 60px 0 40px 0;
+  padding: 80px 0 40px 0;
   text-align: center;
+  color: white;
 }
-.banner-top-wrapper:after{
+.banner-bar-wrapper:after{
   clear: both;
   content: "";
   display: block;
 }
-.banner-top-bar{
-  width: 40%;
+.banner-bar{
+  width: 42%;
   float: left;
   height: 20px;
   border-bottom: 7px solid white;
 }
-.banner-top-logo{
+.banner-top-logo,
+.banner-bottom-scroll{
   float: left;
-  width: 20%;
+  width: 16%;
 }
 .banner-top-logo img{
-  width: 40px;
+  width: 50px;
 }
 .banner-content{
+  font-size: 13px;
+  line-height: 1.3em;
   clear: both;
-  border-bottom: 7px solid white;
+  /*border-bottom: 7px solid white;*/
 }
+.banner-bottom-scroll{
+  margin-top: 30px;
+}
+.banner-bottom-scroll a{
+  background: url(/sites/all/themes/zen/img/scroll.png) no-repeat;
+  background-position-x: 50%;
+  padding-top: 20px;
+  color: white;
+  font-family: serif;
+}
+
 
 body.front #page-title{
-  display: hidden;
+  display: none;
 }
 
 
+/* slideshow1 */
+.pane-carousel{
+  width: 690px;
+  margin: 0 auto;
+}
+
+.pane-block-2 img{
+  float: left;
+}
+
 /* slideshow */
-#views_slideshow_cycle_main_home_master-default .views-field-field-photo img{
+.pane-home-master .views-field-nothing-1,
+.pane-home-master .views-field-nothing-1 a{
+  /*background: #000;*/
+  color: white;
+  width: 45%;
+  float:left;
+}
+.pane-home-master .views-field-nothing-1 div{
+  clear: both;
+}
+/*.pane-home-master .views-field-view-node{
+  display: none;
+}*/
+.pane-home-master .views-field-field-photo{
+  margin-left: 100px;
+}
+.pane-home-master .views-field-field-photo img,
+.pane-home-products .views-field-field-image img{
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%; /* future proofing */
   -khtml-border-radius: 50%; /* for old Konqueror browsers */
 }
+.pane-home-master .slick-dots>li button:before{
+  color: white;
+}
+
+
+
+.pane-home-products .views-row{
+  /*float: left;*/
+  display: inline-block;
+  width: 25%;
+  padding: 30px;
+}
+.pane-home-products .views-field{
+  text-align: center;
+  margin: 0 auto;
+  /*margin: 0 auto;*/
+}
+
