@@ -31,6 +31,10 @@ body .region-sidebar-second,
 body #footer{
   padding: 0;
 }
+#header{
+  width: 960px;
+  margin: 0 auto;
+}
 
 .region-header{
   background: #ddd; 
@@ -41,7 +45,8 @@ body #footer{
 }
 
 .navigation-wrapper{
-  position: relative;
+  width: 630px;
+  margin: 0 auto;
 }
 @media (min-width: 480px){
   #navigation{
@@ -69,4 +74,9 @@ h2.pane-title{
 body #footer{
   width: 100%;
   padding-top: 40px;
+}
+body.not-front #content{
+  width: 630px;
+  margin: 0 auto;
+  /*margin: 0 auto;*/
 }

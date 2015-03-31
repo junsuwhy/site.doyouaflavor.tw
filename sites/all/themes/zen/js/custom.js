@@ -29,6 +29,20 @@ jQuery(document).ready(function($){
   });
   $('.pane-carousel .slick-list').before($('.pane-carousel .slick-dots'));
   $('.pane-home-master .slick-list').before($('.pane-home-master .slick-dots'));
+
+
+
+  $('.home-scroll-button').click(function(){
+    var scrollAmount = $('.navigation-wrapper').position().top+$('#navigation').position().top;
+    $('body').animate({scrollTop: scrollAmount},1000);
+  })
+
+  if($('body.front').length==1){
+    $('.menu-423 a').click(function(){
+      var scrollAmount = $('#products').position().top;
+      $('body').animate({scrollTop: scrollAmount},1000);  
+    })
+  }
   
 
 });

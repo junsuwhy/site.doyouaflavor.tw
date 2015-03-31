@@ -24,6 +24,7 @@
 .banner-bottom-scroll{
   float: left;
   width: 16%;
+  padding-bottom: 15px;
 }
 .banner-top-logo img{
   width: 50px;
