@@ -25,9 +25,6 @@
 #navigation ul.links>li:hover a{
   border-bottom: black solid 4px;
 }
-#navigation ul.links>li.menu-423.active a{
-  border-bottom: none;
-}
 /*#navigation a,
 #navigation a:hover,
 #navigation a:active{

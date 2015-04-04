@@ -78,10 +78,42 @@ jQuery(document).ready(function($){
     $('body').animate({scrollTop: scrollAmount},1000);
   })
 
+
+
   if($('body.front').length==1){
-    $('.menu-423 a').click(function(){
-      var scrollAmount = $('#products').offset().top;
-      $('body').animate({scrollTop: scrollAmount},1000);  
+    $('a').each(function(){
+      if(typeof $(this).attr('href') == 'string'){
+        if($(this).attr('href').substr(0,2)=="/#"){
+          add_to_scroll($(this));
+        }
+      }
+    });
+
+    // $('#salers .views-field-view-node a').magnificPopup({
+    //   items:[
+    //     {
+    //       src: $(this).attr('href'),
+    //       type:'ajax'
+    //     },
+    //   ],
+    //   type:'ajax'
+    // });
+    
+    $('#salers .views-field-view-node a').magnificPopup({
+      type:'ajax'
+    });
+
+  }
+
+  function add_to_scroll($item){
+    $items = $item.each(function(){      
+      $(this).click(function(){        
+        var $target = $('#'+$(this).attr('href').split('#')[1]);
+        tmt = parseInt($target.css('margin-top').split('px')[0]);
+        var scrollAmount = $target.offset().top-tmt;
+        $('body').animate({scrollTop: scrollAmount},1000);
+        return false;  
+      })
     })
   }
 

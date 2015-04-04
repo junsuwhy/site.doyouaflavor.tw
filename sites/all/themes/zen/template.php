@@ -285,6 +285,12 @@ function zen_preprocess_maintenance_page(&$variables, $hook) {
  */
 function zen_process_maintenance_page(&$variables, $hook) {
   zen_process_html($variables, $hook);
+  // custom content type page template
+  // Renders a new page template to the list of templates used if it exists
+  if (isset($variables['node']->type)) {
+  // This code looks for any page--custom_content_type.tpl.php page
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+  }
   // Ensure default regions get a variable. Theme authors often forget to remove
   // a deleted region's variable in maintenance-page.tpl.
   foreach (array('header', 'navigation', 'highlighted', 'help', 'content', 'sidebar_first', 'sidebar_second', 'footer', 'bottom') as $region) {

@@ -11,6 +11,9 @@ scripts[] = js/slick.min.js
 stylesheets[all][] = system.menus.css
 scripts[] = js/custom.js
 
+stylesheets[all][] = css/magnific-popup.css
+scripts[] = js/jquery.magnific-popup.js
+
 regions[header]         = Header
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted
