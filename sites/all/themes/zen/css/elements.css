@@ -1,16 +1,17 @@
+#logo{
+  margin: 15px 0 0 105px;
+}
 #logo img{
   width: 30px;
-  margin: 38px 0 0 105px;
 }
 @media (min-width: 480px){
   body #navigation{
     background: url(/sites/all/themes/zen/img/curve.png) repeat-x;
     width: 630px;
     position: initial;
-    margin: 20px auto;
     margin-bottom: 0;
-    height: 100px;
-    padding: 30px 0;
+    padding: 30px 0 0 0;
+    height: 70px;
   }  
 }
 #navigation ul.links>li{
@@ -52,7 +53,7 @@
   width: 30px;
   float: left;
   padding: 0;
-  margin:30px 30px 0 0 ;
+  margin:50px 30px 0 0;
 }
 .slick-dots>li{
   list-style-type: none;
@@ -60,15 +61,16 @@
 .slick-dots>li button{
   border: none;
   background: transparent;
-  line-height: 30px;
+  line-height: 25px;
   width: 30px;
-  height:30px;
+  height:25px;
   overflow: hidden;
 }
 .slick-dots>li button:before{
   content: "○";
   font-family: serif;
-  font-size: 11px
+  font-size: 9px;
+  font-weight: bolder;
 }
 .slick-dots>li.slick-active button:before{
   content: "●";

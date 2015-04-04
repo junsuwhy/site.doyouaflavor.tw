@@ -1,5 +1,12 @@
 .region-header{
-  background: url(/sites/all/themes/zen/img/banner.png);
+  background: url(/sites/all/themes/zen/img/banner.jpg);
+  background-position-x: center;
+  /* Firefox */
+  -moz-background-size: cover;
+  /* WebKit */
+  -webkit-background-size: cover;
+  background-size: cover;
+  /* Opera 9.5+, later Google Chrome */
 }
 
 #block-block-3{
@@ -54,8 +61,6 @@ body.front #page-title{
 
 /* slideshow1 */
 .pane-carousel{
-  width: 750px;
-  margin: 0 auto;
 }
 .pane-carousel img{
   padding-right: 60px;
@@ -101,6 +106,7 @@ body.front #page-title{
 }
 .pane-home-master .slick-dots{
   margin-left:100px;
+  margin-top:130px;
 }
 .pane-home-master .slick-dots>li button:before{
   color: white;
@@ -115,17 +121,21 @@ body.front #page-title{
 }
 
 .pane-home-products{
-  background: url(/sites/all/themes/zen/img/bg-road.png);
-}
-.pane-home-products .pane-title,
-.pane-home-products .view-header{
-  margin-left: 165px;
+  background: url(/sites/all/themes/zen/img/bg-road-ww.jpg);
+  background-position-x: center;
+  /* Firefox */
+  -moz-background-size: cover;
+  /* WebKit */
+  -webkit-background-size: cover;
+  background-size: cover;
+  /* Opera 9.5+, later Google Chrome */
 }
 .pane-home-products .pane-title{
   padding-top: 120px;
 }
 .pane-home-products .view-content{
-  margin: 0 80px;
+  width: 780px;
+  margin: 0 auto;
 }
 
 .pane-home-products .views-row{
@@ -140,3 +150,12 @@ body.front #page-title{
   /*margin: 0 auto;*/
 }
 
+
+
+
+
+.pane-home-products .pane-title, .pane-home-products .view-header{
+  width: 630px;
+  margin: 0 auto;
+  /* Opera 9.5+, later Google Chrome */
+}
