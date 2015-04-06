@@ -88,21 +88,38 @@ jQuery(document).ready(function($){
         }
       }
     });
-
-    // $('#salers .views-field-view-node a').magnificPopup({
-    //   items:[
-    //     {
-    //       src: $(this).attr('href'),
-    //       type:'ajax'
-    //     },
-    //   ],
-    //   type:'ajax'
-    // });
     
-    $('#salers .views-field-view-node a').magnificPopup({
-      type:'ajax'
-    });
+    $('#salers .views-row a,.pane-home-products .views-row a').magnificPopup({
+      type:'ajax',
+      callbacks: {
+          parseAjax: function(mfpResponse) {
+            // mfpResponse.data is a "data" object from ajax "success" callback
+            // for simple HTML file, it will be just String
+            // You may modify it to change contents of the popup
+            // For example, to show just #some-element:
+            var $data = $(mfpResponse.data);
+            var $title = $data.find('#page-title');
+            mfpResponse.data = $data.find('.node').prepend($title);
+            // mfpResponse.data;
+            
+            // mfpResponse.data must be a String or a DOM (jQuery) element
+            
+            console.log('Ajax content loaded:', mfpResponse);
+          },
+          ajaxContentAdded: function() {
+            // Ajax content is loaded and appended to DOM
+            console.log(this.content);
+          }
+        },
+      ajax: {
+        settings: null, // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
+        // For example:
+        // settings: {cache:false, async:false}
 
+        cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
+        tError: '<a href="%url%">The content</a> could not be loaded.', //  Error message, can contain %curr% and %total% tags if gallery is enabled
+      }
+    });
   }
 
   function add_to_scroll($item){
@@ -110,7 +127,7 @@ jQuery(document).ready(function($){
       $(this).click(function(){        
         var $target = $('#'+$(this).attr('href').split('#')[1]);
         tmt = parseInt($target.css('margin-top').split('px')[0]);
-        var scrollAmount = $target.offset().top-tmt;
+        var scrollAmount = $target.offset().top;
         $('body').animate({scrollTop: scrollAmount},1000);
         return false;  
       })
@@ -119,6 +136,58 @@ jQuery(document).ready(function($){
 
   $bb3 = $('#block-block-3');
   $bb3.css('padding-top',($w.height()-$bb3.height())/2-10)+'px 0';
+
+  function setRollingNavigator(){
+    var salersTop = $("#salers").offset().top;
+    var productsTop = $("#products").offset().top;
+    var pageUrl = location.href.split("#")[0];
+    var historyState = {href:pageUrl};
+    var naviState = 'noState';
+    $w.scroll(onRollChangeNavigator);
+    onRollChangeNavigator();
+
+    function onRollChangeNavigator(){
+      if($w.scrollTop()<salersTop){
+        // noState
+        if(naviState !== 'noState'){
+          salersTop = $("#salers").offset().top;
+          productsTop = $("#products").offset().top;
+          $('.menu-419,.menu-423').removeClass('active');
+          console.log(historyState);
+          console.log(pageUrl);
+          history.pushState(historyState, document.title, pageUrl);
+          naviState = 'noState';
+        }
+
+      }else if($w.scrollTop()>=productsTop-1){  
+        // products
+        if(naviState !== 'products'){
+          salersTop = $("#salers").offset().top;
+          productsTop = $("#products").offset().top;
+          $('.menu-419,.menu-423').removeClass('active');
+          $('.menu-423').addClass('active');
+          history.pushState(historyState, document.title, pageUrl+"#products");
+          naviState = 'products'
+        }
+
+      }else if($w.scrollTop()>=salersTop-1 && $w.scrollTop()<productsTop){
+        // salers
+        if(naviState !== 'salers'){
+          salersTop = $("#salers").offset().top;
+          productsTop = $("#products").offset().top;
+          $('.menu-419,.menu-423').removeClass('active');
+          $('.menu-419').addClass('active');
+          history.pushState(historyState, document.title, pageUrl+"#salers");
+          naviState = 'salers'
+        }
+
+      }
+    }
+
+
+
+  }
+  setRollingNavigator();
   
 
 });

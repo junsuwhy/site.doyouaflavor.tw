@@ -16,7 +16,7 @@ body #page{
 }
 .header-logo-menu-wrapper{
   background: rgba(255,255,255,0.5);
-  z-index: 9999;
+  z-index: 1042;
   position: fixed;
   top: 0;
   /*left: auto;*/
@@ -25,11 +25,14 @@ body #page{
   box-sizing: border-box;
 }
 body .pane-home-master{
-  background: -webkit-linear-gradient(left, black 58%, white 58%);
-  margin: 150px 0;
+  padding: 150px 0;
   width: 100%;
 }
 body .pane-home-master>div{
+  background: -webkit-linear-gradient(left, black 58%, white 58%);
+  width: 100%;
+}
+body .pane-home-master .view-content{
   width: 960px;
   margin: 0 auto;
 }
@@ -93,4 +96,21 @@ body.not-front #content{
 .pane-carousel{
   margin: 40px auto;
   width: 750px;
+}
+/**
+ * 光箱
+ */
+body.front .mfp-content #page-title{
+  display: inherit;
+}
+body.front .mfp-content{
+  width: 760px;
+  background: #ddd;
+    -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -khtml-border-radius: 20px;
+}
+.mfp-content .node{
+  padding: 20px;
 }
