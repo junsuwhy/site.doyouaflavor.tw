@@ -16,32 +16,6 @@ jQuery(document).ready(function($){
   onResize();
   $w.resize(onResize);
 
-  onRoll();
-  $w.scroll(onRoll);
-
-  
-
-  function onRoll(){
-    // var y = $('.pane-home-products').position().top;
-    $rh.css({'background-position-y': $w.scrollTop()});
-    $ppt.css({'background-position-y': $w.scrollTop()-$ppt.offset().top});
-
-    if($w.scrollTop() < $hd.height()){
-      if(hlmwp == 'fixed'){
-        $hlmw.css({'position':'inherit'});
-        hlmwp = 'inherit';
-        $main.css({'margin-top':0});
-      }
-    }else{
-      if(hlmwp == 'inherit'){
-        $hlmw.css({'position':'fixed'});
-        hlmwp = 'fixed';
-        $main.css({'margin-top':hlmwh});
-      }
-    }
-    
-    // $('.pane-home-products').css({'background-position-y': $(window).scrollTop()-y});
-  }
 
   function onResize(){
     $ppt.css({'height': $w.height()});
@@ -56,7 +30,7 @@ jQuery(document).ready(function($){
     arrows: false,
     swipe: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
   });
   $('.pane-home-master .view-content').slick({
     dots: true,
@@ -66,7 +40,7 @@ jQuery(document).ready(function($){
     swipe: true,
     // adaptiveHeight: false,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
   });
   $('.pane-carousel .slick-list').before($('.pane-carousel .slick-dots'));
   $('.pane-home-master .slick-list').before($('.pane-home-master .slick-dots'));
@@ -89,7 +63,7 @@ jQuery(document).ready(function($){
       }
     });
     
-    $('#salers .views-row a,.pane-home-products .views-row a').magnificPopup({
+    $('.menu-418 a,#salers .views-row a,.pane-home-products .views-row a').magnificPopup({
       type:'ajax',
       callbacks: {
           parseAjax: function(mfpResponse) {
@@ -109,7 +83,16 @@ jQuery(document).ready(function($){
           ajaxContentAdded: function() {
             // Ajax content is loaded and appended to DOM
             console.log(this.content);
-          }
+          },
+          open: function() {
+            var pageUrl = location.href.split("#")[0];
+            var historyState = {href:pageUrl};
+            console.log(this);
+            var tag = this.currItem.src.substr(1);
+            history.pushState(historyState, document.title, pageUrl+"#"+tag);
+            // Will fire when this exact popup is opened
+            // this - is Magnific Popup object
+          },
         },
       ajax: {
         settings: null, // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
@@ -120,6 +103,16 @@ jQuery(document).ready(function($){
         tError: '<a href="%url%">The content</a> could not be loaded.', //  Error message, can contain %curr% and %total% tags if gallery is enabled
       }
     });
+    
+    //開啟頁面時如果有商品或街賣者區塊，就打開來。
+    var pageTag = location.href.split("#")[1];
+    if(pageTag){
+      if(pageTag.length>0){
+        if($('[id="'+pageTag+'"]').length==0){
+          $($('[href="/'+pageTag+'"]')[0]).trigger('click');
+        }
+      }
+    }
   }
 
   function add_to_scroll($item){
@@ -138,50 +131,79 @@ jQuery(document).ready(function($){
   $bb3.css('padding-top',($w.height()-$bb3.height())/2-10)+'px 0';
 
   function setRollingNavigator(){
-    var salersTop = $("#salers").offset().top;
-    var productsTop = $("#products").offset().top;
+    var salersTop,productsTop,footerTop;
+    updateElementsTop();
     var pageUrl = location.href.split("#")[0];
     var historyState = {href:pageUrl};
     var naviState = 'noState';
-    $w.scroll(onRollChangeNavigator);
+    $('.menu-419,.menu-423,.menu-420').removeClass('active');
+    $w.scroll(function(){
+      window.requestAnimationFrame(onRollChangeNavigator);
+    });
     onRollChangeNavigator();
 
+    function updateElementsTop(){
+      salersTop = $("#salers").offset().top;
+      productsTop = $("#products").offset().top;
+      footerTop = $(document).height()-$(window).height()-1;
+      $('.menu-419,.menu-423,.menu-420').removeClass('active');
+    }
+
     function onRollChangeNavigator(){
-      if($w.scrollTop()<salersTop){
+      var wst = $w.scrollTop();
+
+      if(wst<salersTop){
         // noState
         if(naviState !== 'noState'){
-          salersTop = $("#salers").offset().top;
-          productsTop = $("#products").offset().top;
-          $('.menu-419,.menu-423').removeClass('active');
-          console.log(historyState);
-          console.log(pageUrl);
+          updateElementsTop();
           history.pushState(historyState, document.title, pageUrl);
           naviState = 'noState';
         }
 
-      }else if($w.scrollTop()>=productsTop-1){  
+      }else if(wst >= footerTop){
+        if(naviState !== 'footer'){
+          updateElementsTop();
+          $('.menu-420').addClass('active');
+          history.pushState(historyState, document.title, pageUrl+"#footer");
+          naviState = 'footer'
+        }
+      }else if(wst>=productsTop-1 && wst < footerTop){  
         // products
         if(naviState !== 'products'){
-          salersTop = $("#salers").offset().top;
-          productsTop = $("#products").offset().top;
-          $('.menu-419,.menu-423').removeClass('active');
+          updateElementsTop();
           $('.menu-423').addClass('active');
           history.pushState(historyState, document.title, pageUrl+"#products");
           naviState = 'products'
         }
 
-      }else if($w.scrollTop()>=salersTop-1 && $w.scrollTop()<productsTop){
+      }else if(wst>=salersTop-1 && wst<productsTop){
         // salers
         if(naviState !== 'salers'){
-          salersTop = $("#salers").offset().top;
-          productsTop = $("#products").offset().top;
-          $('.menu-419,.menu-423').removeClass('active');
+          updateElementsTop();
           $('.menu-419').addClass('active');
           history.pushState(historyState, document.title, pageUrl+"#salers");
           naviState = 'salers'
         }
 
       }
+
+      $rh.css({'background-position-y': wst});
+      $ppt.css({'background-position-y': wst-$ppt.offset().top});
+
+      if(wst < $hd.height()){
+        if(hlmwp == 'fixed'){
+          $hlmw.css({'position':'inherit'});
+          hlmwp = 'inherit';
+          $main.css({'margin-top':0});
+        }
+      }else{
+        if(hlmwp == 'inherit'){
+          $hlmw.css({'position':'fixed'});
+          hlmwp = 'fixed';
+          $main.css({'margin-top':hlmwh});
+        }
+      }
+
     }
 
 
