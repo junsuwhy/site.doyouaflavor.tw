@@ -13,13 +13,33 @@ jQuery(document).ready(function($){
   $main = $("#main");
   $hd = $('.header__region');
 
+  var isSidr = false;
+  
+
   onResize();
   $w.resize(onResize);
 
 
   function onResize(){
-    $ppt.css({'height': $w.height()});
+    
+    var pptRealHeight = 0;
+    var pptChildrenArray = $ppt.children();
+    for (var i = pptChildrenArray.length - 1; i >= 0; i--) {
+      pptRealHeight+=$(pptChildrenArray[i]).height();
+    };
+    pptRealHeight += $ppt.css('padding-top')+$ppt.css('padding-bottom');
+
+    $ppt.css({'height': $w.height()>pptRealHeight?$w.height():pptRealHeight});
     $rh.css({'height': $w.height()});
+
+    if($w.width()<767 && !isSidr){
+      $('.header__logo-image').sidr();
+      $('#sidr').append($('#navigation'));
+      isSidr = true;
+      $('.view-home-master .views-row').each(function(){
+        $(this).find('.views-field-field-photo').insertBefore($(this).find('.views-field-nothing-1'));
+      })
+    }
     
   }
 
@@ -31,6 +51,14 @@ jQuery(document).ready(function($){
     swipe: true,
     autoplay: true,
     autoplaySpeed: 5000,
+    responsive:[
+      {
+        breakpoint: 800,
+        settings: {
+          dots: false,
+        }
+      },
+    ]
   });
   $('.pane-home-master .view-content').slick({
     dots: true,
@@ -41,6 +69,12 @@ jQuery(document).ready(function($){
     // adaptiveHeight: false,
     autoplay: true,
     autoplaySpeed: 5000,
+    responsive:[
+      {
+        breakpoint: 800,
+        settings: "unslick",
+      },
+    ]
   });
   $('.pane-carousel .slick-list').before($('.pane-carousel .slick-dots'));
   $('.pane-home-master .slick-list').before($('.pane-home-master .slick-dots'));
@@ -113,6 +147,11 @@ jQuery(document).ready(function($){
         }
       }
     }
+
+    // 按下上一頁
+    onpopstate = function(){
+      $('button.mfp-close').trigger('click');
+    }
   }
 
   function add_to_scroll($item){
@@ -156,7 +195,7 @@ jQuery(document).ready(function($){
         // noState
         if(naviState !== 'noState'){
           updateElementsTop();
-          history.pushState(historyState, document.title, pageUrl);
+          history.replaceState(historyState, document.title, pageUrl);
           naviState = 'noState';
         }
 
@@ -164,7 +203,7 @@ jQuery(document).ready(function($){
         if(naviState !== 'footer'){
           updateElementsTop();
           $('.menu-420').addClass('active');
-          history.pushState(historyState, document.title, pageUrl+"#footer");
+          history.replaceState(historyState, document.title, pageUrl+"#footer");
           naviState = 'footer'
         }
       }else if(wst>=productsTop-1 && wst < footerTop){  
@@ -172,7 +211,7 @@ jQuery(document).ready(function($){
         if(naviState !== 'products'){
           updateElementsTop();
           $('.menu-423').addClass('active');
-          history.pushState(historyState, document.title, pageUrl+"#products");
+          history.replaceState(historyState, document.title, pageUrl+"#products");
           naviState = 'products'
         }
 
@@ -181,7 +220,7 @@ jQuery(document).ready(function($){
         if(naviState !== 'salers'){
           updateElementsTop();
           $('.menu-419').addClass('active');
-          history.pushState(historyState, document.title, pageUrl+"#salers");
+          history.replaceState(historyState, document.title, pageUrl+"#salers");
           naviState = 'salers'
         }
 

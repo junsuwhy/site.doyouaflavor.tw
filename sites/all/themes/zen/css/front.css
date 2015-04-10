@@ -80,10 +80,10 @@ body.front #page-title{
   color: white;
 }
 .pane-home-master .views-field-nothing-1{
-  width: 300px;
-  float:left;
   padding: 40px 0;
   padding-right: 150px;
+  float: left;
+  width: 450px;
 }
 
 .pane-home-master .views-field-nothing-1 div{
@@ -141,8 +141,8 @@ body.front #page-title{
 .pane-home-products .views-row{
   /*float: left;*/
   display: inline-block;
-  width: 25%;
   padding: 30px;
+  width: 32%;
 }
 .pane-home-products .views-field{
   text-align: center;
@@ -158,4 +158,34 @@ body.front #page-title{
   width: 630px;
   margin: 0 auto;
   /* Opera 9.5+, later Google Chrome */
+}
+
+@media screen and (max-width: 767px) {
+  .pane-carousel img{
+    padding-right:0;
+  }
+  .pane-home-master .views-row{
+    clear: both;
+  }
+  .pane-home-master .views-field-field-photo{
+    width: 260px;
+    margin: 0 auto;
+  }
+  .pane-home-master .views-field-nothing-1{
+    margin: 0 auto;
+    float: none;
+    padding: 0; 
+  }
+  .pane-home-products .view-content{
+    width: 100%;
+  }
+  .pane-home-products .pane-title, .pane-home-products .view-header{
+    width: 100%;
+    padding: 0 40px;
+  }
+  .pane-home-products .views-row{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
 }

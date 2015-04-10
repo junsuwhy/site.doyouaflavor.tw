@@ -73,3 +73,29 @@
   content: "●";
   font-family: serif;
 }
+
+.mfp-content .field-name-field-photo img,
+.mfp-content .field-name-field-image img{
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; /* future proofing */
+  -khtml-border-radius: 50%; /* for old Konqueror browsers */
+}
+
+@media screen and (max-width: 767px) {
+  .header-logo-menu-wrapper{
+    padding-top: 0;
+  }
+  #logo{
+    margin: 0;
+    padding: 20px;
+  }
+  .sidr #navigation .links li, .sidr #navigation .menu li{
+    float: none;
+  }
+  .sidr #navigation #main-menu ul li a{
+    font-size: 1.3em;
+    padding: .5em;
+
+  }
+}

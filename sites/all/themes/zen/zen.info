@@ -14,6 +14,9 @@ scripts[] = js/custom.js
 stylesheets[all][] = css/magnific-popup.css
 scripts[] = js/jquery.magnific-popup.js
 
+stylesheets[all][] = css/jquery.sidr.light.css
+scripts[] = js/jquery.sidr.min.js
+
 regions[header]         = Header
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted

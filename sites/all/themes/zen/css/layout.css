@@ -114,3 +114,40 @@ body.front .mfp-content{
 .mfp-content .node{
   padding: 20px;
 }
+
+@media screen and (max-width: 767px) {
+  .header-logo-menu,
+  .pane-carousel,
+  .pane-block-1, 
+  .pane-block-2,
+  .navigation-wrapper ,
+  body .pane-home-master .view-content{
+    width: 100%;
+  }
+  body .pane-home-master>div{
+    background: black;
+    padding: 80px 0;
+  }
+  body .pane-home-master{
+    padding: 0;
+  }
+  .pane-block-1,
+  .pane-block-2{
+    padding: 0 40px;
+  }
+  .pane-block-2{
+    padding-bottom: 80px;
+  }
+  .pane-home-products{
+    padding: 40px 0;
+  }
+  #block-block-4{
+    width: 100%;
+  }
+  body #footer{
+    padding: 40px 40px;
+  }
+  body.front .mfp-content{
+    width: 100%;
+  }
+}
