@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
   });
   $('.pane-home-master .view-content').slick({
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 300,
     arrows: false,
     swipe: true,
