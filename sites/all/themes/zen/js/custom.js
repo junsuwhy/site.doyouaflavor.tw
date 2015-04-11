@@ -1,19 +1,18 @@
 jQuery(document).ready(function($){
   
-  $w = $(window);
-  $d = $(document);
+  var $w = $(window);
+  var $d = $(document);
 
 
 
-  $ppt = $('.pane-home-products');
-  $rh = $('.region-header');
-
-  $hlmw = $('.header-logo-menu-wrapper');
-  hlmwp = $hlmw.css('position');
-  hlmwh = $hlmw.height()+parseInt($hlmw.css('padding-top').substr(0,2));
-  $main = $("#main");
-  $hd = $('.header__region');
-  $m_active = $('.menu-419,.menu-423,.menu-420');
+  var $ppt = $('.pane-home-products');
+  var $rh = $('.region-header');
+  var $hlmw = $('.header-logo-menu-wrapper');
+  var hlmwp = $hlmw.css('position');
+  var hlmwh = $hlmw.height()+parseInt($hlmw.css('padding-top').substr(0,2));
+  var $main = $("#main");
+  var $hd = $('.header__region');
+  var $m_active = $('.menu-419,.menu-423,.menu-420');
 
   var isSidr = false;
   
@@ -116,17 +115,17 @@ jQuery(document).ready(function($){
             fileref.setAttribute("href", filename);
 
 
-            var s = document.createElement("script");
+            s = document.createElement("script");
             s.type = "text/javascript";
             s.src="/sites/all/libraries/leaflet/leaflet.js";
             
 
-            var s2 = document.createElement("script");
+            s2 = document.createElement("script");
             s2.type = "text/javascript";
             s2.src="/sites/all/modules/leaflet/leaflet.drupal.js";
             
 
-            var s3 = document.createElement("script");
+            s3 = document.createElement("script");
             script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
             s3.innerHTML = script;
 
@@ -134,17 +133,7 @@ jQuery(document).ready(function($){
 
 
             var $data = $(mfpResponse.data);
-
-            // script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
-            // eval(script);
-            // script3 = $('<script src="http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.js"></script>');
-            // script2 = $('<script src="http://dyaf.deb:8000/sites/all/modules/leaflet/leaflet.drupal.js"></script>');
-            // console.log(script);
-            // console.log(script2);
-            mfpResponse.data = $data.find('#content');//.append(script3).append(script2).append($('<script>'+script+'</script>'));
-            mfpResponse.data.append(s);
-            mfpResponse.data.append(s2);
-            mfpResponse.data.append(s3);
+            mfpResponse.data = $data.find('#content');
             mfpResponse.data.append(fileref);
 
 
@@ -156,6 +145,8 @@ jQuery(document).ready(function($){
             console.log('Ajax content loaded:', mfpResponse);
           },
           ajaxContentAdded: function() {
+            $('.mfp-content').append(s).append(s2).append(s3);
+
             // Ajax content is loaded and appended to DOM
             L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
             Drupal.attachBehaviors(document, Drupal.settings);
