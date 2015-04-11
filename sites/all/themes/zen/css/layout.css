@@ -6,6 +6,9 @@ body #page{
   width: 630px;
   margin: 0 auto;
 }
+#block-block-3{
+  width: 480px;
+}
 #block-block-4{
   width: 700px;
   margin: 0 auto;
@@ -116,6 +119,9 @@ body.front .mfp-content{
 }
 
 @media screen and (max-width: 767px) {
+  #block-block-3{
+    width: auto;
+  }
   .header-logo-menu,
   .pane-carousel,
   .pane-block-1, 
@@ -126,7 +132,7 @@ body.front .mfp-content{
   }
   body .pane-home-master>div{
     background: black;
-    padding: 80px 0;
+    padding: 80px 40px;
   }
   body .pane-home-master{
     padding: 0;

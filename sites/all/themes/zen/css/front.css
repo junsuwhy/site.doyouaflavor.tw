@@ -10,11 +10,10 @@
 }
 
 #block-block-3{
-  width: 480px;
   margin: 0 auto;
-  padding: 80px 0 40px 0;
   text-align: center;
   color: white;
+  padding: 80px 0 40px 0;
 }
 .banner-bar-wrapper:after{
   clear: both;
@@ -174,7 +173,9 @@ body.front #page-title{
   .pane-home-master .views-field-nothing-1{
     margin: 0 auto;
     float: none;
-    padding: 0; 
+    padding: 0;
+    width: auto; 
+    
   }
   .pane-home-products .view-content{
     width: 100%;
