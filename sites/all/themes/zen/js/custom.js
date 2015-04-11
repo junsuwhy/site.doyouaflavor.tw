@@ -109,7 +109,7 @@ jQuery(document).ready(function($){
             // For example, to show just #some-element:
             
 
-            var filename = "http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.css";
+            var filename = "/sites/all/libraries/leaflet/leaflet.css";
             var fileref=document.createElement("link");
             fileref.setAttribute("rel", "stylesheet");
             fileref.setAttribute("type", "text/css");
@@ -118,12 +118,12 @@ jQuery(document).ready(function($){
 
             var s = document.createElement("script");
             s.type = "text/javascript";
-            s.src="http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.js";
+            s.src="/sites/all/libraries/leaflet/leaflet.js";
             
 
             var s2 = document.createElement("script");
             s2.type = "text/javascript";
-            s2.src="http://dyaf.deb:8000/sites/all/modules/leaflet/leaflet.drupal.js";
+            s2.src="/sites/all/modules/leaflet/leaflet.drupal.js";
             
 
             var s3 = document.createElement("script");
