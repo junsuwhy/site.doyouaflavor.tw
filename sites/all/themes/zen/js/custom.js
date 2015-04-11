@@ -1,6 +1,7 @@
 jQuery(document).ready(function($){
   
   $w = $(window);
+  $d = $(document);
 
 
 
@@ -12,6 +13,7 @@ jQuery(document).ready(function($){
   hlmwh = $hlmw.height()+parseInt($hlmw.css('padding-top').substr(0,2));
   $main = $("#main");
   $hd = $('.header__region');
+  $m_active = $('.menu-419,.menu-423,.menu-420');
 
   var isSidr = false;
   
@@ -27,7 +29,7 @@ jQuery(document).ready(function($){
     for (var i = pptChildrenArray.length - 1; i >= 0; i--) {
       pptRealHeight+=$(pptChildrenArray[i]).height();
     };
-    pptRealHeight += $ppt.css('padding-top')+$ppt.css('padding-bottom');
+    pptRealHeight += parseInt($ppt.css('padding-top').split('px')[0])+parseInt($ppt.css('padding-bottom').split('px')[0]);
 
     $ppt.css({'height': $w.height()>pptRealHeight?$w.height():pptRealHeight});
     $rh.css({'height': $w.height()});
@@ -97,7 +99,7 @@ jQuery(document).ready(function($){
       }
     });
     
-    $('.menu-418 a,#salers .views-row a,.pane-home-products .views-row a').magnificPopup({
+    $('.menu-418 a,#vendors .views-row a,.pane-home-products .views-row a').magnificPopup({
       type:'ajax',
       callbacks: {
           parseAjax: function(mfpResponse) {
@@ -105,9 +107,48 @@ jQuery(document).ready(function($){
             // for simple HTML file, it will be just String
             // You may modify it to change contents of the popup
             // For example, to show just #some-element:
+            
+
+            var filename = "http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.css";
+            var fileref=document.createElement("link");
+            fileref.setAttribute("rel", "stylesheet");
+            fileref.setAttribute("type", "text/css");
+            fileref.setAttribute("href", filename);
+
+
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src="http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.js";
+            
+
+            var s2 = document.createElement("script");
+            s2.type = "text/javascript";
+            s2.src="http://dyaf.deb:8000/sites/all/modules/leaflet/leaflet.drupal.js";
+            
+
+            var s3 = document.createElement("script");
+            script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
+            s3.innerHTML = script;
+
+            
+
+
             var $data = $(mfpResponse.data);
-            var $title = $data.find('#page-title');
-            mfpResponse.data = $data.find('.node').prepend($title);
+
+            // script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
+            // eval(script);
+            // script3 = $('<script src="http://dyaf.deb:8000/sites/all/libraries/leaflet/leaflet.js"></script>');
+            // script2 = $('<script src="http://dyaf.deb:8000/sites/all/modules/leaflet/leaflet.drupal.js"></script>');
+            // console.log(script);
+            // console.log(script2);
+            mfpResponse.data = $data.find('#content');//.append(script3).append(script2).append($('<script>'+script+'</script>'));
+            mfpResponse.data.append(s);
+            mfpResponse.data.append(s2);
+            mfpResponse.data.append(s3);
+            mfpResponse.data.append(fileref);
+
+
+            // .prepend($title);
             // mfpResponse.data;
             
             // mfpResponse.data must be a String or a DOM (jQuery) element
@@ -116,6 +157,8 @@ jQuery(document).ready(function($){
           },
           ajaxContentAdded: function() {
             // Ajax content is loaded and appended to DOM
+            L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
+            Drupal.attachBehaviors(document, Drupal.settings);
             console.log(this.content);
           },
           open: function() {
@@ -167,31 +210,44 @@ jQuery(document).ready(function($){
   }
 
   $bb3 = $('#block-block-3');
-  $bb3.css('padding-top',($w.height()-$bb3.height())/2-10)+'px 0';
+  var bb3height = 0;
+  $('.banner-bar-wrapper,.banner-content').each(function(){
+    bb3height+=$(this).height();
+  });
+  $bb3.css('padding-top',($w.height()-bb3height)/2-25)+'px 0';
+  
 
   function setRollingNavigator(){
-    var salersTop,productsTop,footerTop;
+    var vendorsTop,productsTop,footerTop;
     updateElementsTop();
     var pageUrl = location.href.split("#")[0];
     var historyState = {href:pageUrl};
     var naviState = 'noState';
-    $('.menu-419,.menu-423,.menu-420').removeClass('active');
+    
+    
+    $m_active.removeClass('active');
     $w.scroll(function(){
       window.requestAnimationFrame(onRollChangeNavigator);
     });
     onRollChangeNavigator();
 
     function updateElementsTop(){
-      salersTop = $("#salers").offset().top;
-      productsTop = $("#products").offset().top;
-      footerTop = $(document).height()-$(window).height()-1;
-      $('.menu-419,.menu-423,.menu-420').removeClass('active');
+      var $vendors = $("#vendors");
+      if($vendors.length>0){
+        vendorsTop = $("#vendors").offset().top;  
+      }
+      var $products = $("#products");
+      if($products.length>0){
+        productsTop = $("#products").offset().top;  
+      }
+      footerTop = $d.height()-$w.height()-1;
+      $m_active.removeClass('active');
     }
 
     function onRollChangeNavigator(){
       var wst = $w.scrollTop();
 
-      if(wst<salersTop){
+      if(wst<vendorsTop){
         // noState
         if(naviState !== 'noState'){
           updateElementsTop();
@@ -204,7 +260,7 @@ jQuery(document).ready(function($){
           updateElementsTop();
           $('.menu-420').addClass('active');
           history.replaceState(historyState, document.title, pageUrl+"#footer");
-          naviState = 'footer'
+          naviState = 'footer';
         }
       }else if(wst>=productsTop-1 && wst < footerTop){  
         // products
@@ -212,16 +268,16 @@ jQuery(document).ready(function($){
           updateElementsTop();
           $('.menu-423').addClass('active');
           history.replaceState(historyState, document.title, pageUrl+"#products");
-          naviState = 'products'
+          naviState = 'products';
         }
 
-      }else if(wst>=salersTop-1 && wst<productsTop){
-        // salers
-        if(naviState !== 'salers'){
+      }else if(wst>=vendorsTop-1 && wst<productsTop){
+        // vendors
+        if(naviState !== 'vendors'){
           updateElementsTop();
           $('.menu-419').addClass('active');
-          history.replaceState(historyState, document.title, pageUrl+"#salers");
-          naviState = 'salers'
+          history.replaceState(historyState, document.title, pageUrl+"#vendors");
+          naviState = 'vendors';
         }
 
       }

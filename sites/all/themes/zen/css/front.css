@@ -13,7 +13,6 @@
   margin: 0 auto;
   text-align: center;
   color: white;
-  padding: 80px 0 40px 0;
 }
 .banner-bar-wrapper:after{
   clear: both;
@@ -23,8 +22,8 @@
 .banner-bar{
   width: 42%;
   float: left;
-  height: 20px;
   border-bottom: 7px solid white;
+  height: 33px;
 }
 .banner-top-logo,
 .banner-bottom-scroll{
@@ -42,12 +41,12 @@
   /*border-bottom: 7px solid white;*/
 }
 .banner-bottom-scroll{
-  margin-top: 30px;
+  margin-top: 42px;
 }
 .banner-bottom-scroll a{
   background: url(/sites/all/themes/zen/img/scroll.png) no-repeat;
   background-position-x: 50%;
-  padding-top: 20px;
+  padding-top: 28px;
   color: white;
   font-family: serif;
 }

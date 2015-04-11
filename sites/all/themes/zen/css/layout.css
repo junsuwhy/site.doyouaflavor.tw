@@ -14,8 +14,8 @@ body #page{
   margin: 0 auto;
 }
 .header-logo-menu{
-  width: 960px;
   margin: 0 auto;
+  width: 960px;
 }
 .header-logo-menu-wrapper{
   background: rgba(255,255,255,0.5);
@@ -24,8 +24,24 @@ body #page{
   top: 0;
   /*left: auto;*/
   width: 100%;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
   box-sizing: border-box;
+}
+ .line-box-inner{
+  width: 50%;
+  height: 100%;
+ }
+.header-logo-menu-wrapper .line-box-wrapper{
+  height: 20px;
+}
+#block-block-3 .line-box-wrapper{
+  height: 500px;
+}
+.header-logo-menu-wrapper .line-box-inner{
+  border-right: black 1px solid;
+}
+#block-block-3 .line-box-inner{
+  border-right: white 1px solid;
 }
 body .pane-home-master{
   padding: 150px 0;
@@ -53,7 +69,8 @@ body #footer{
 }
 
 .region-header{
-  background: #ddd; 
+  background: #ddd;
+  overflow: hidden; 
 }
 
 #page #main{
@@ -114,8 +131,14 @@ body.front .mfp-content{
   border-radius: 20px;
   -khtml-border-radius: 20px;
 }
-.mfp-content .node{
+.mfp-content #content{
   padding: 20px;
+}
+@media screen and (min-width: 767px) and (max-width: 960px){
+  .header-logo-menu{
+    width: auto;
+  }
+
 }
 
 @media screen and (max-width: 767px) {
