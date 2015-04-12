@@ -90,7 +90,7 @@
 }
 .pane-home-master .views-field-view-node a,
 .pane-home-products .views-field-title a{
-  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', 'ＭＳ 明朝', 'MS Mincho','DFKai-sb',serif;
+  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3',"楷體","KaiTi", "標楷體", 'DFKai-sb','Georgia','Times New Roman',serif;
 }
 .map-info-text {
   position: absolute;
