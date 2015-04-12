@@ -92,6 +92,12 @@
 .pane-home-products .views-field-title a{
   font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', 'ＭＳ 明朝', 'MS Mincho','DFKai-sb',serif;
 }
+.map-info-text {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  width: 100%;
+}
 
 @media screen and (max-width: 767px) {
   .header-logo-menu-wrapper{

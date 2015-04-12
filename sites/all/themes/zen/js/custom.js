@@ -150,6 +150,13 @@ jQuery(document).ready(function($){
             // Ajax content is loaded and appended to DOM
             L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
             Drupal.attachBehaviors(document, Drupal.settings);
+            $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
+
+            // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
+            // .click(function(){
+            //   $('.map-info-text').hide();
+            // })
+
             console.log(this.content);
           },
           open: function() {

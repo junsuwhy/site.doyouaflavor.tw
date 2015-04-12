@@ -122,6 +122,7 @@ body.not-front #content{
  */
 body.front .mfp-content #page-title{
   display: inherit;
+  padding-bottom: 40px;
 }
 body.front .mfp-content{
   width: 760px;
@@ -133,6 +134,9 @@ body.front .mfp-content{
 }
 .mfp-content #content{
   padding: 20px;
+}
+.mfp-content .field-name-field-photo{
+  text-align: center;
 }
 @media screen and (min-width: 767px) and (max-width: 960px){
   .header-logo-menu{

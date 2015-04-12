@@ -3,15 +3,16 @@
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: "sourcehansans-tc-light;","蘋果儷中黑","Apple LiGothic Medium","微軟正黑體","Microsoft JhengHei","新細明體","PMingLiU",sans-serif;
+
 }
 
 /*font*/
 p,a{
   font-size: 15px;
-  /*font-family: serif;*/
 }
 h1,h2,h3,h4,.serif{
-  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', 'ＭＳ 明朝', 'MS Mincho',"MingLiU", "標楷體", 'DFKai-sb',serif;
+  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', 'ＭＳ 明朝', 'MS Mincho',"楷體","KaiTi", "標楷體", 'DFKai-sb',serif;
 }
 
 
