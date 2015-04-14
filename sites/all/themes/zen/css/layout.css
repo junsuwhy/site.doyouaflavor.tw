@@ -48,12 +48,14 @@ body .pane-home-master{
   width: 100%;
 }
 body .pane-home-master>div{
-  background: -webkit-linear-gradient(left, black 58%, white 58%);
+  background: -webkit-linear-gradient(left, black 50%, white 50%);
   width: 100%;
+  margin: 0 auto;
 }
 body .pane-home-master .view-content{
   width: 960px;
   margin: 0 auto;
+  background: -webkit-linear-gradient(left, black 57.5%, white 57.5%);
 }
 body #header, 
 body #content, 
@@ -160,6 +162,9 @@ body.front .mfp-content{
   body .pane-home-master>div{
     background: black;
     padding: 80px 40px;
+  }
+  body .pane-home-master .view-home-master .view-content{
+    background: black;
   }
   body .pane-home-master{
     padding: 0;

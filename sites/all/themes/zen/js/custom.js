@@ -37,9 +37,9 @@ jQuery(document).ready(function($){
       $('.header__logo-image').sidr();
       $('#sidr').append($('#navigation'));
       isSidr = true;
-      $('.view-home-master .views-row').each(function(){
-        $(this).find('.views-field-field-photo').insertBefore($(this).find('.views-field-nothing-1'));
-      })
+      // $('.view-home-master .views-row').each(function(){
+      //   $(this).find('.views-field-field-photo').insertBefore($(this).find('.views-field-nothing-1'));
+      // })
     }
     
   }
@@ -151,6 +151,7 @@ jQuery(document).ready(function($){
             L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
             Drupal.attachBehaviors(document, Drupal.settings);
             $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
+            Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
 
             // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
             // .click(function(){

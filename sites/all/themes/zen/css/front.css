@@ -79,7 +79,7 @@ body.front #page-title{
 }
 .pane-home-master .views-field-nothing-1{
   padding: 40px 0;
-  padding-right: 150px;
+  padding-right: 130px;
   float: left;
   width: 450px;
 }
@@ -93,6 +93,8 @@ body.front #page-title{
 .pane-home-master .views-field-field-photo{
   /*margin-left: 100px;*/
   padding-top:50px;
+  float:right;
+  width:42%;
 
 }
 .pane-home-master .views-field-field-photo img,
@@ -166,8 +168,9 @@ body.front #page-title{
     clear: both;
   }
   .pane-home-master .views-field-field-photo{
-    width: 260px;
     margin: 0 auto;
+    width: 100%;
+    text-align: center;
   }
   .pane-home-master .views-field-nothing-1{
     margin: 0 auto;
