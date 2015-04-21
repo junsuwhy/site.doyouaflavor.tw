@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
   var hlmwh = $hlmw.height()+parseInt($hlmw.css('padding-top').substr(0,2));
   var $main = $("#main");
   var $hd = $('.header__region');
-  var $m_active = $('.menu-419,.menu-423,.menu-420');
+  var $m_active = $('.menu-419,.menu-423/*,.menu-420*/');
 
   var isSidr = false;
   
@@ -153,6 +153,8 @@ jQuery(document).ready(function($){
             $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
             Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
 
+            $('.field-name-field-action-buttom').insertAfter($('#block-views-map-block'));
+
             // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
             // .click(function(){
             //   $('.map-info-text').hide();
@@ -163,7 +165,6 @@ jQuery(document).ready(function($){
           open: function() {
             var pageUrl = location.href.split("#")[0];
             var historyState = {href:pageUrl};
-            console.log(this);
             var tag = this.currItem.src.substr(1);
             history.pushState(historyState, document.title, pageUrl+"#"+tag);
             // Will fire when this exact popup is opened
@@ -257,7 +258,7 @@ jQuery(document).ready(function($){
       }else if(wst >= footerTop){
         if(naviState !== 'footer'){
           updateElementsTop();
-          $('.menu-420').addClass('active');
+          // $('.menu-420').addClass('active');
           history.replaceState(historyState, document.title, pageUrl+"#footer");
           naviState = 'footer';
         }
