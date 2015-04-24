@@ -54,7 +54,7 @@ jQuery(document).ready(function($){
     autoplaySpeed: 5000,
     responsive:[
       {
-        breakpoint: 800,
+        breakpoint: 768,
         settings: {
           dots: false,
         }
@@ -72,7 +72,7 @@ jQuery(document).ready(function($){
     autoplaySpeed: 5000,
     responsive:[
       {
-        breakpoint: 800,
+        breakpoint: 768,
         settings: "unslick",
       },
     ]
@@ -97,7 +97,7 @@ jQuery(document).ready(function($){
         }
       }
     });
-    
+
     $('.menu-418 a,#vendors .views-row a,.pane-home-products .views-row a').magnificPopup({
       type:'ajax',
       callbacks: {
