@@ -34,7 +34,8 @@ jQuery(document).ready(function($){
     $rh.css({'height': $w.height()});
 
     if($w.width()<767 && !isSidr){
-      $('.header__logo-image').sidr();
+      $('.header__logo').sidr();
+      // $('a.header__logo').attr('href','javascript: void(0);');
       $('#sidr').append($('#navigation'));
       isSidr = true;
       // $('.view-home-master .views-row').each(function(){

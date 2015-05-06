@@ -146,6 +146,9 @@ body.front .mfp-content{
   }
 
 }
+.sidr{
+  z-index: 1000;
+}
 
 @media screen and (max-width: 767px) {
   #block-block-3{
