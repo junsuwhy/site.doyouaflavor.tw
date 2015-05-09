@@ -115,6 +115,10 @@ body.not-front #content{
   margin: 0 auto;
   /*margin: 0 auto;*/
 }
+body.page-vendors #content{
+  width:100%;
+  margin: 0 auto;
+}
 .pane-carousel{
   margin: 40px auto;
   width: 750px;
@@ -122,11 +126,11 @@ body.not-front #content{
 /**
  * 光箱
  */
-body.front .mfp-content #page-title{
+.mfp-content #page-title{
   display: inherit;
   padding-bottom: 40px;
 }
-body.front .mfp-content{
+.mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content{
   width: 760px;
   background: #ddd;
     -moz-border-radius: 20px;

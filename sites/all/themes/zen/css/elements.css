@@ -187,3 +187,16 @@
   background-color: #b7812b;
   color: #ffffa4;
 }
+
+
+/* 地圖頁 */
+.view-vendors-map-page .leaflet-popup-content{
+  text-align: center;
+  width: 200px;
+}
+.view-vendors-map-page .vendors-row img{
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; /* future proofing */
+  -khtml-border-radius: 50%; /* for old Konqueror browsers */
+}

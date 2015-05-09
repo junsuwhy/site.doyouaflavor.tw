@@ -28,7 +28,12 @@ jQuery(document).ready(function($){
     for (var i = pptChildrenArray.length - 1; i >= 0; i--) {
       pptRealHeight+=$(pptChildrenArray[i]).height();
     };
-    pptRealHeight += parseInt($ppt.css('padding-top').split('px')[0])+parseInt($ppt.css('padding-bottom').split('px')[0]);
+    var paddingtop = $ppt.css('padding-top');
+    paddingtop = (typeof paddingtop == "string")?parseInt(paddingtop.split('px')[0]):0;
+    var paddingbottom = $ppt.css('padding-bottom');
+    paddingbottom = (typeof paddingbottom == "string")?parseInt(paddingbottom.split('px')[0]):0;
+
+    pptRealHeight += paddingtop+paddingbottom;
 
     $ppt.css({'height': $w.height()>pptRealHeight?$w.height():pptRealHeight});
     $rh.css({'height': $w.height()});
@@ -99,88 +104,7 @@ jQuery(document).ready(function($){
       }
     });
 
-    $('.menu-418 a,#vendors .views-row a,.pane-home-products .views-row a').magnificPopup({
-      type:'ajax',
-      callbacks: {
-          parseAjax: function(mfpResponse) {
-            // mfpResponse.data is a "data" object from ajax "success" callback
-            // for simple HTML file, it will be just String
-            // You may modify it to change contents of the popup
-            // For example, to show just #some-element:
-            
-
-            var filename = "/sites/all/libraries/leaflet/leaflet.css";
-            var fileref=document.createElement("link");
-            fileref.setAttribute("rel", "stylesheet");
-            fileref.setAttribute("type", "text/css");
-            fileref.setAttribute("href", filename);
-
-
-            s = document.createElement("script");
-            s.type = "text/javascript";
-            s.src="/sites/all/libraries/leaflet/leaflet.js";
-            
-
-            s2 = document.createElement("script");
-            s2.type = "text/javascript";
-            s2.src="/sites/all/modules/leaflet/leaflet.drupal.js";
-            
-
-            s3 = document.createElement("script");
-            script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
-            s3.innerHTML = script;
-
-            
-
-
-            var $data = $(mfpResponse.data);
-            mfpResponse.data = $data.find('#content');
-            mfpResponse.data.append(fileref);
-
-
-            // .prepend($title);
-            // mfpResponse.data;
-            
-            // mfpResponse.data must be a String or a DOM (jQuery) element
-            
-            console.log('Ajax content loaded:', mfpResponse);
-          },
-          ajaxContentAdded: function() {
-            $('.mfp-content').append(s).append(s2).append(s3);
-
-            // Ajax content is loaded and appended to DOM
-            L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
-            Drupal.attachBehaviors(document, Drupal.settings);
-            $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
-            Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
-
-            $('.field-name-field-action-buttom').insertAfter($('#block-views-map-block'));
-
-            // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
-            // .click(function(){
-            //   $('.map-info-text').hide();
-            // })
-
-            console.log(this.content);
-          },
-          open: function() {
-            var pageUrl = location.href.split("#")[0];
-            var historyState = {href:pageUrl};
-            var tag = this.currItem.src.substr(1);
-            history.pushState(historyState, document.title, pageUrl+"#"+tag);
-            // Will fire when this exact popup is opened
-            // this - is Magnific Popup object
-          },
-        },
-      ajax: {
-        settings: null, // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
-        // For example:
-        // settings: {cache:false, async:false}
-
-        cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
-        tError: '<a href="%url%">The content</a> could not be loaded.', //  Error message, can contain %curr% and %total% tags if gallery is enabled
-      }
-    });
+    prepareMagnificPopup();
     
     //開啟頁面時如果有商品或街賣者區塊，就打開來。
     var pageTag = location.href.split("#")[1];
@@ -197,6 +121,16 @@ jQuery(document).ready(function($){
       $('button.mfp-close').trigger('click');
     }
   }
+
+  // 在地圖頁
+  if($('body.page-vendors').length==1){
+    jQuery.map(Drupal.settings.leaflet[0].lMap._layers, function(lobj){
+      if(typeof lobj._leaflet_id == "number"){
+        lobj.on('popupopen',prepareMagnificPopup);
+      }
+    });
+    Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
+  }// $('body.page-vendors').length==1
 
   function add_to_scroll($item){
     $items = $item.each(function(){      
@@ -284,7 +218,8 @@ jQuery(document).ready(function($){
       }
 
       $rh.css({'background-position-y': wst});
-      $ppt.css({'background-position-y': wst-$ppt.offset().top});
+      ppt_offset_top = ($ppt.offset() == null)?0:$ppt.offset().top;
+      $ppt.css({'background-position-y': wst-ppt_offset_top});
 
       if(wst < $hd.height()){
         if(hlmwp == 'fixed'){
@@ -306,6 +241,91 @@ jQuery(document).ready(function($){
 
   }
   setRollingNavigator();
+
+  function prepareMagnificPopup(){
+    $('.menu-418 a,#vendors .views-row a,.pane-home-products .views-row a,a.vendors-row').magnificPopup({
+      type:'ajax',
+      callbacks: {
+          parseAjax: function(mfpResponse) {
+            // mfpResponse.data is a "data" object from ajax "success" callback
+            // for simple HTML file, it will be just String
+            // You may modify it to change contents of the popup
+            // For example, to show just #some-element:
+            
+
+            var filename = "/sites/all/libraries/leaflet/leaflet.css";
+            var fileref=document.createElement("link");
+            fileref.setAttribute("rel", "stylesheet");
+            fileref.setAttribute("type", "text/css");
+            fileref.setAttribute("href", filename);
+
+
+            s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src="/sites/all/libraries/leaflet/leaflet.js";
+            
+
+            s2 = document.createElement("script");
+            s2.type = "text/javascript";
+            s2.src="/sites/all/modules/leaflet/leaflet.drupal.js";
+            
+
+            s3 = document.createElement("script");
+            script = 'jQuery.extend'+mfpResponse.data.split('<script>jQuery.extend')[1].split('</script>')[0];
+            s3.innerHTML = script;
+
+            
+
+
+            var $data = $(mfpResponse.data);
+            mfpResponse.data = $data.find('#content');
+            mfpResponse.data.append(fileref);
+
+
+            // .prepend($title);
+            // mfpResponse.data;
+            
+            // mfpResponse.data must be a String or a DOM (jQuery) element
+            
+            console.log('Ajax content loaded:', mfpResponse);
+          },
+          ajaxContentAdded: function() {
+            $('.mfp-content').append(s).append(s2).append(s3);
+
+            // Ajax content is loaded and appended to DOM
+            L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
+            Drupal.attachBehaviors(document, Drupal.settings);
+            $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
+            Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
+
+            $('.field-name-field-action-buttom').insertAfter($('#block-views-map-block'));
+
+            // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
+            // .click(function(){
+            //   $('.map-info-text').hide();
+            // })
+
+            console.log(this.content);
+          },
+          open: function() {
+            var pageUrl = location.href.split("#")[0];
+            var historyState = {href:pageUrl};
+            var tag = this.currItem.src.substr(1);
+            history.pushState(historyState, document.title, pageUrl+"#"+tag);
+            // Will fire when this exact popup is opened
+            // this - is Magnific Popup object
+          },
+        },
+      ajax: {
+        settings: null, // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
+        // For example:
+        // settings: {cache:false, async:false}
+
+        cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
+        tError: '<a href="%url%">The content</a> could not be loaded.', //  Error message, can contain %curr% and %total% tags if gallery is enabled
+      }
+    });
+  }
   
 
 });
