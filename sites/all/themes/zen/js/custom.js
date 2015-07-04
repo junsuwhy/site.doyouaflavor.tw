@@ -243,7 +243,7 @@ jQuery(document).ready(function($){
   setRollingNavigator();
 
   function prepareMagnificPopup(){
-    $('.menu-418 a,#vendors .views-row a,.pane-home-products .views-row a,a.vendors-row').magnificPopup({
+    $('.menu-418 a,#vendors .views-field-field-photo a,#vendors .views-field-view-node a,.pane-home-products .views-row a,a.vendors-row').magnificPopup({
       type:'ajax',
       callbacks: {
           parseAjax: function(mfpResponse) {
