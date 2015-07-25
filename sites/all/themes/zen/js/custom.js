@@ -295,10 +295,10 @@ jQuery(document).ready(function($){
             // Ajax content is loaded and appended to DOM
             L.Icon.Default.imagePath = '/sites/all/libraries/leaflet/images';
             Drupal.attachBehaviors(document, Drupal.settings);
-            $('.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
+            $('.mfp-content .leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable').trigger('click');
             Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
 
-            $('.field-name-field-action-buttom').insertAfter($('#block-views-map-block'));
+            $('.mfp-content .field-name-field-action-buttom').insertAfter($('.mfp-content #block-views-map-block'));
 
             // $('#block-views-map-block .view-id-map').append($('<div class="map-info-text">點一下圖針，看看我在哪裡販售吧!!</div>'))
             // .click(function(){
