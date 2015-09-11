@@ -52,5 +52,21 @@ mixpanel.init("4193cddff57fb301d2852e94a8d9acec");</script><!-- end Mixpanel -->
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+
+<script type="text/javascript">
+    window._pt_lt = new Date().getTime();
+    window._pt_sp_2 = [];
+    _pt_sp_2.push('setAccount,5fc6b8fc');
+    var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    (function() {
+        var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
+        atag.src = _protocol + 'js.ptengine.com/pta.js';
+        var stag = document.createElement('script'); stag.type = 'text/javascript'; stag.async = true;
+        stag.src = _protocol + 'js.ptengine.com/pts.js';
+        var s = document.getElementsByTagName('script')[0]; 
+        s.parentNode.insertBefore(atag, s);s.parentNode.insertBefore(stag, s);
+    })();
+</script>
+                        
 </body>
 </html>
