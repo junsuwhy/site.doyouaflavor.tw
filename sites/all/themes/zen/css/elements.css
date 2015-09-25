@@ -200,3 +200,30 @@
   border-radius: 50%; /* future proofing */
   -khtml-border-radius: 50%; /* for old Konqueror browsers */
 }
+
+.round-corner img{
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; /* future proofing */
+  -khtml-border-radius: 50%; /* for old Konqueror browsers */
+}
+
+/* cta */
+.cta-1{
+  background: #25B9D7;
+  border-radius: 4px;
+  color: white;
+  padding: 12px 30px;
+  font-size: 24px;
+
+}
+.cta-1:hover{
+  background: #279CB5;
+  border-radius: 4px; 
+  font-size : 24px;
+  color: white;
+  text-decoration: none;
+}
+.cta-1:,.cta-1:visited{
+  background: #1F7C90;
+}

@@ -1,4 +1,8 @@
 jQuery(document).ready(function($){
+
+  if(Drupal.settings.leaflet){
+    Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
+  }
   
   var $w = $(window);
   var $d = $(document);
@@ -287,7 +291,7 @@ jQuery(document).ready(function($){
             
             // mfpResponse.data must be a String or a DOM (jQuery) element
             
-            console.log('Ajax content loaded:', mfpResponse);
+            // console.log('Ajax content loaded:', mfpResponse);
           },
           ajaxContentAdded: function() {
             $('.mfp-content').append(s).append(s2).append(s3);
@@ -305,7 +309,7 @@ jQuery(document).ready(function($){
             //   $('.map-info-text').hide();
             // })
 
-            console.log(this.content);
+            // console.log(this.content);
           },
           open: function() {
             var pageUrl = location.href.split("#")[0];

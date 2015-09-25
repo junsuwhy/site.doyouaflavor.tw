@@ -158,6 +158,35 @@ body.front #page-title{
   /* Opera 9.5+, later Google Chrome */
 }
 
+
+.view-home-new-sales .view-content .views-row{
+  width: 33%;
+  float: left;
+}
+
+.pane-home-new-partner .views-row{
+  float:left;
+  width: 200px;
+}
+
+.pane-home-new-partner .view img{
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+
+.pane-home-new-partner .view img:hover{
+  -webkit-filter: grayscale(0);
+  -moz-filter: grayscale(0);
+  -ms-filter: grayscale(0);
+  -o-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
 @media screen and (max-width: 767px) {
   .pane-carousel img{
     padding-right:0;
