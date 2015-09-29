@@ -159,14 +159,37 @@ body.front #page-title{
 }
 
 
-.view-home-new-sales .view-content .views-row{
-  width: 33%;
-  float: left;
+.view-home-new-sales .view-footer{
+  clear:both;
 }
 
-.pane-home-new-partner .views-row{
-  float:left;
+.front-sales-person{
+  width: 33%;
+  float: left;
+  padding: 0 10px;
+}
+.front-sales-person h3{
+  text-align: center;
+}
+.front-sales-person h3 a{
+  font-size : 24px;
+}
+
+.front-sales-position{
+  padding: 6px 0;
+}
+.views-label-field-address:after, .views-label-field-duration:after{
+  content:"/";
+}
+
+.front-partner-item{
+  /*float:left;*/
+  display: inline-block;
   width: 200px;
+  background-color: #e5e5e5;
+  height: 200px;
+  margin: 2px;
+  position: relative;
 }
 
 .pane-home-new-partner .view img{
@@ -177,6 +200,12 @@ body.front #page-title{
   filter: grayscale(100%);
   filter: url(grayscale.svg); /* Firefox 4+ */
   filter: gray; /* IE 6-9 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .pane-home-new-partner .view img:hover{
@@ -185,6 +214,16 @@ body.front #page-title{
   -ms-filter: grayscale(0);
   -o-filter: grayscale(0);
   filter: grayscale(0);
+}
+
+.view-home-new-press .views-field-nothing{
+  color: #aaa;
+  font-size: 13px;
+}
+
+.front-press-item{
+  width: 50%;
+  float: left;
 }
 
 @media screen and (max-width: 767px) {

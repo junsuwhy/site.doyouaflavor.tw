@@ -17,24 +17,43 @@ body #page{
 }
 .normal-width-panel>div{
   width: 960px;
-  padding-top: 40px;
-  padding-bottom: 40px;
   margin: 0 auto; 
   overflow:auto;
 }
+.normal-width-panel>h2{
+  padding: 20px 0;
+}
 
+.pane-home-new-sales{
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.pane-node>div{
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
 .pane-cta-only{
   height: 240px;
-  text-align: center;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .pane-home-new-partner{
   text-align: center;
 }
 
+div.view-home-new-partner{
+  padding: 0;
+}
+
 .pane-home-new-press{
   text-align: center;
+  padding-bottom: 60px;
+}
+
+.view-home-new-press>div{
+  width: 630px;
+  text-align: right;
+  margin: 0 auto;
 }
 
 .pane-block-1,.pane-block-2{
