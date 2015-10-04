@@ -15,11 +15,11 @@
   }  
 }
 #main-menu ul li a{
-  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', 'ＭＳ 明朝', 'MS Mincho',"MingLiU", "標楷體", 'DFKai-sb',serif;
+  font-size: 18px;
   padding-bottom: .4em;
 }
 #navigation ul.links>li{
-  margin-right: 45px;
+  margin-right: 30px;
   padding: 0;
 }
 #navigation ul.links>li:last-child{
@@ -200,3 +200,37 @@
   border-radius: 50%; /* future proofing */
   -khtml-border-radius: 50%; /* for old Konqueror browsers */
 }
+
+.round-corner img{
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; /* future proofing */
+  -khtml-border-radius: 50%; /* for old Konqueror browsers */
+}
+
+/* cta */
+.cta-1{
+  background: #25B9D7;
+  border-radius: 4px;
+  color: white;
+  padding: 12px 30px;
+  font-size: 24px;
+
+}
+.cta-1:hover{
+  background: #279CB5;
+  border-radius: 4px; 
+  font-size : 24px;
+  color: white;
+  text-decoration: none;
+}
+.cta-1:,.cta-1:visited{
+  background: #1F7C90;
+}
+
+.view-cta-only{
+  height: 120px;
+  text-align: center;
+  padding-top: 50px;
+}
+

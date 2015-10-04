@@ -2,6 +2,60 @@ body #page{
   max-width: 100%;
   /*margin: 0 auto;*/
 }
+.gary-background{
+  background: #f5f5f5;
+  width: 100%;
+}
+.full-width{
+  width: 100%;
+}
+.node-panel{
+  width: 630px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  margin: 0 auto;
+}
+.normal-width-panel>div{
+  width: 960px;
+  margin: 0 auto; 
+  overflow:auto;
+}
+.normal-width-panel>h2{
+  padding: 20px 0;
+}
+
+.pane-home-new-sales{
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.pane-node>div{
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.pane-cta-only{
+  height: 240px;
+  padding-top: 50px;
+}
+
+.pane-home-new-partner{
+  text-align: center;
+}
+
+div.view-home-new-partner{
+  padding: 0;
+}
+
+.pane-home-new-press{
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.view-home-new-press>div{
+  width: 630px;
+  text-align: right;
+  margin: 0 auto;
+}
+
 .pane-block-1,.pane-block-2{
   width: 630px;
   margin: 0 auto;
@@ -111,7 +165,7 @@ body #footer{
   padding-top: 40px;
 }
 body.not-front #content{
-  width: 630px;
+  /*width: 630px;*/
   margin: 0 auto;
   /*margin: 0 auto;*/
 }

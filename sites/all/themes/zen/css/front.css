@@ -158,6 +158,74 @@ body.front #page-title{
   /* Opera 9.5+, later Google Chrome */
 }
 
+
+.view-home-new-sales .view-footer{
+  clear:both;
+}
+
+.front-sales-person{
+  width: 33%;
+  float: left;
+  padding: 0 10px;
+}
+.front-sales-person h3{
+  text-align: center;
+}
+.front-sales-person h3 a{
+  font-size : 24px;
+}
+
+.front-sales-position{
+  padding: 6px 0;
+}
+.views-label-field-address:after, .views-label-field-duration:after{
+  content:"/";
+}
+
+.front-partner-item{
+  /*float:left;*/
+  display: inline-block;
+  width: 200px;
+  background-color: #e5e5e5;
+  height: 200px;
+  margin: 2px;
+  position: relative;
+}
+
+.pane-home-new-partner .view img{
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.pane-home-new-partner .view img:hover{
+  -webkit-filter: grayscale(0);
+  -moz-filter: grayscale(0);
+  -ms-filter: grayscale(0);
+  -o-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+.view-home-new-press .views-field-nothing{
+  color: #aaa;
+  font-size: 13px;
+}
+
+.front-press-item{
+  width: 50%;
+  float: left;
+}
+
 @media screen and (max-width: 767px) {
   .pane-carousel img{
     padding-right:0;
