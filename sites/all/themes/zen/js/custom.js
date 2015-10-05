@@ -87,6 +87,25 @@ jQuery(document).ready(function($){
       },
     ]
   });
+  $('.view-home-products .view-content').slick({
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    dots: true,
+    infinite: false,
+    speed: 300,
+    arrows: false,
+    swipe: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    responsive:[
+      {
+        breakpoint: 768,
+        settings: "unslick",
+      },
+    ]
+  });
+
+
   $('.pane-carousel .slick-list').before($('.pane-carousel .slick-dots'));
   $('.pane-home-master .slick-list').before($('.pane-home-master .slick-dots'));
 
@@ -141,7 +160,8 @@ jQuery(document).ready(function($){
       $(this).click(function(){        
         var $target = $('#'+$(this).attr('href').split('#')[1]);
         tmt = parseInt($target.css('margin-top').split('px')[0]);
-        var scrollAmount = $target.offset().top;
+        var scrollAmount = $target.offset().top-90;
+        console.log(scrollAmount);
         $('body').animate({scrollTop: scrollAmount},1000);
         return false;  
       })

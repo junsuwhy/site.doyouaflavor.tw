@@ -1,21 +1,21 @@
 #logo{
-  margin: 15px 0 0 105px;
+  margin: 15px 30px 0 105px;
 }
 #logo img{
   width: 30px;
 }
 @media (min-width: 480px){
   body #navigation{
-    background: url(/sites/all/themes/zen/img/curve.png) repeat-x;
-    width: 630px;
+    /*background: url(/sites/all/themes/zen/img/curve.png) repeat-x;*/
     position: initial;
     margin-bottom: 0;
-    padding: 30px 0 0 0;
+    /*padding: 30px 0 0 0;*/
+    padding: 20px 0 0 0;
     height: 70px;
   }  
 }
 #main-menu ul li a{
-  font-size: 18px;
+  font-size: 20px;
   padding-bottom: .4em;
 }
 #navigation ul.links>li{
@@ -108,7 +108,11 @@
     margin: 0;
     position: relative;
     top: -8px;
-    left: 8px;
+    -moz-transform: scale(.5,.5);
+    -o-transform: scale(.5,.5);
+    -ms-transform: scale(.5,.5);
+    -webkit-transform: scale(.5,.5);
+    transform: scale(.5,.5);
   }
   .sidr #navigation .links li, .sidr #navigation .menu li{
     float: none;
@@ -160,7 +164,7 @@
     transform: rotate3d(0, 0, 1, -45deg);
   } 
   .header-logo-menu{
-    height: 80px;
+    height: 36px;
   }
   .line-box-inner{
     display: none;
@@ -228,9 +232,5 @@
   background: #1F7C90;
 }
 
-.view-cta-only{
-  height: 120px;
-  text-align: center;
-  padding-top: 50px;
-}
+
 

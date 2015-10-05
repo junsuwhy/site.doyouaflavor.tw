@@ -1,5 +1,5 @@
 *{
-  line-height: 1.2em;
+  line-height: 1.5em; 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -13,17 +13,17 @@ p,a{
 }
 h1, h1 a,h2, h2 a,h3,h3 a,h4, h4 a,.serif{
   font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro','Georgia','Times New Roman', 'HiraMinProN-W3',"楷體","KaiTi", "標楷體", 'DFKai-sb',serif;
+  color: #333;
 }
 
-
 a{
-  color: black;
+  color: #333;
   text-decoration:none;
 }
 a:hover,
 a:active{
   text-decoration:underline;
-  color: black;
+  color: #333;
 }
 
 body p{

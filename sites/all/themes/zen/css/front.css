@@ -56,7 +56,6 @@ body.front #page-title{
   display: none;
 }
 
-
 /* slideshow1 */
 .pane-carousel{
 }
@@ -139,7 +138,6 @@ body.front #page-title{
 .pane-home-products .views-row{
   /*float: left;*/
   display: inline-block;
-  padding: 30px;
   width: 32%;
 }
 .pane-home-products .views-field{
@@ -147,8 +145,17 @@ body.front #page-title{
   margin: 0 auto;
   /*margin: 0 auto;*/
 }
-
-
+.pane-home-products .views-field-field-image img{
+  display: inline;
+}
+.pane-home-products .slick-dots{
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+.pane-home-products .slick-dots li{
+  display: inline;
+}
 
 
 
@@ -222,15 +229,30 @@ body.front #page-title{
 }
 
 .front-press-item{
-  width: 50%;
-  float: left;
+  width: 312px;
+  padding: 0 13px;
+  margin: 10px 0;
+  display: inline-block;
+}
+
+.view-home-new-press .views-field-field-image{
+  float:left;
 }
 
 @media screen and (max-width: 767px) {
   .pane-carousel img{
     padding-right:0;
   }
-  .pane-home-master .views-row{
+  .front-sales-person{
+    float: none;
+    margin:0 auto;
+    width: 100%;
+    padding: 0 10px 40px;
+  } 
+  .front-sales-person .views-field-field-photo{
+    text-align: center;
+  }
+  /*.pane-home-master .views-row{
     clear: both;
   }
   .pane-home-master .views-field-field-photo{
@@ -245,7 +267,7 @@ body.front #page-title{
     padding: 0;
     width: auto; 
     
-  }
+  }*/
   .pane-home-products .view-content{
     width: 100%;
   }

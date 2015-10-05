@@ -15,10 +15,24 @@ body #page{
   padding-bottom: 120px;
   margin: 0 auto;
 }
+@media screen and (max-width: 767px) {
+  .node-panel{
+    width: 100%;
+  } 
+}
+.panel-home-intro{
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .normal-width-panel>div{
   width: 960px;
   margin: 0 auto; 
   overflow:auto;
+}
+@media screen and (max-width: 767px) {
+  .normal-width-panel>div{
+    width: 100%;
+  }
 }
 .normal-width-panel>h2{
   padding: 20px 0;
@@ -37,6 +51,21 @@ body #page{
   padding-top: 50px;
 }
 
+.view-cta-only{
+  height: 220px;
+  text-align: center;
+  padding-top: 140px;
+}
+@media screen and (max-width: 767px) {
+  .view-cta-only{
+    padding-top: 70px;
+  }
+}
+.view-cta-only.view-display-id-block_2{
+  height: 140px;
+  padding-top: 50px; 
+}
+
 .pane-home-new-partner{
   text-align: center;
 }
@@ -51,10 +80,11 @@ div.view-home-new-partner{
 }
 
 .view-home-new-press>div{
-  width: 630px;
-  text-align: right;
+  max-width: 630px;
+  text-align: center;
   margin: 0 auto;
 }
+
 
 .pane-block-1,.pane-block-2{
   width: 630px;
@@ -88,12 +118,17 @@ div.view-home-new-partner{
 .header-logo-menu-wrapper .line-box-wrapper{
   height: 20px;
 }
+@media screen and (max-width: 767px) {
+  .header-logo-menu-wrapper .line-box-wrapper{
+    height: 0;
+  }
+}
 #block-block-3 .line-box-wrapper{
   height: 500px;
 }
-.header-logo-menu-wrapper .line-box-inner{
+/*.header-logo-menu-wrapper .line-box-inner{
   border-right: black 1px solid;
-}
+}*/
 #block-block-3 .line-box-inner{
   border-right: white 1px solid;
 }
@@ -134,7 +169,7 @@ body #footer{
 }
 
 .navigation-wrapper{
-  width: 630px;
+  width: 960px;
   margin: 0 auto;
 }
 @media (min-width: 480px){
@@ -144,12 +179,13 @@ body #footer{
 }
 
 .region-footer{
- background: #000;  
+ background: #333;  
  color: white;
 }
 
 h2.pane-title{
-  margin: 0;
+  margin: 20px 0;
+  text-align: center;
 }
 
 /* front */
@@ -180,8 +216,13 @@ body.page-vendors #content{
 /**
  * 光箱
  */
+.mfp-content {
+  text-align: center;
+}
+body.front .mfp-content #page-title{
+  display: block;
+}
 .mfp-content #page-title{
-  display: inherit;
   padding-bottom: 40px;
 }
 .mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content{
@@ -198,6 +239,12 @@ body.page-vendors #content{
 .mfp-content .field-name-field-photo{
   text-align: center;
 }
+.field-label-inline .field-label, 
+.field-label-inline .field-items{
+  display:inline-block;
+  float:none;
+}
+
 @media screen and (min-width: 767px) and (max-width: 960px){
   .header-logo-menu{
     width: auto;
