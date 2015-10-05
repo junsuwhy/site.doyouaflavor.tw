@@ -70,6 +70,11 @@ body.front #page-title{
   padding: 0 50px  60px 0;
 }
 
+.pane-home-new-sales .views-field-field-photo{
+  text-align: center;
+}
+
+
 /* slideshow */
 .pane-home-master .views-field-nothing-1,
 .pane-home-master .views-field-nothing-1 a{
