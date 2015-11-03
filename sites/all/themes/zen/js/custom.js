@@ -2,7 +2,45 @@ jQuery(document).ready(function($){
 
   if(Drupal.settings.leaflet){
     Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
+
+      // set GA code
+    var layers = Drupal.settings.leaflet[0].lMap._layers;
+    Object.keys(layers).map(function(key){
+      console.log(key);
+      console.log(key.match(/^\d+$/));
+      if(key.match(/^\d+$/) ){
+        layers[key].on('click',function(){
+          console.log(key);
+          var html = layers[key]._popup._content;
+          var value = html.match(/<span class="popup-title">(.+)<\/span>/)[1];
+          ga('send', 'event', 'CLICK', 'Click', 'MapsMarker', value);
+        });
+      }
+    })
+
   }
+
+  //set GA link event
+  $('a').map(function(key,item){
+
+    var jitem = $(item);
+    if(jitem.parents('#navigation')){
+      jitem.click(function(){
+        ga('send', 'event', 'CLICK', 'Click', 'Nav', jitem.attr('href'));
+      });
+      
+    }else if(jitem.parents('.panel-pane')){
+      jitem.click(function(){
+        console.log(jitem);
+        var class_name = $(item).parents('.panel-pane').attr('class');
+        var eventLabel = class_name.match(/pane-views pane-([^ ]+)/)[1];
+        ga('send', 'event', 'CLICK', 'Click', eventLabel , jitem.attr('href'));
+        return false;
+      });
+    }
+
+    console.log(jitem);
+  });
   
   var $w = $(window);
   var $d = $(document);
