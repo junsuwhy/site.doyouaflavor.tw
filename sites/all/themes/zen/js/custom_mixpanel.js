@@ -1,7 +1,10 @@
 (function($){
     $(function(){
 
-      if(!window.location.search.split("notrack=")[1]){
+      if(!window.location.search.split("notrack=")[1] && (
+          location.href.match("http://doyouaflavor.tw") || 
+          location.href.match("http://www.doyouaflavor.tw")
+        ){
         mixpanel.track("visit");
 
         var stop = {};

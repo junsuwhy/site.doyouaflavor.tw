@@ -4,43 +4,46 @@ jQuery(document).ready(function($){
     Drupal.settings.leaflet[0].lMap.scrollWheelZoom.disable();
 
       // set GA code
-    var layers = Drupal.settings.leaflet[0].lMap._layers;
-    Object.keys(layers).map(function(key){
-      console.log(key);
-      console.log(key.match(/^\d+$/));
-      if(key.match(/^\d+$/) ){
-        layers[key].on('click',function(){
-          console.log(key);
-          var html = layers[key]._popup._content;
-          var value = html.match(/<span class="popup-title">(.+)<\/span>/)[1];
-          ga('send', 'event', 'CLICK', 'Click', 'MapsMarker', value);
-        });
-      }
-    })
+    layers = Drupal.settings.leaflet[0].lMap._layers;
+    setTimeout(function(){
+      Object.keys(layers).map(function(key){
+        if(key.match(/^\d+$/) ){
+            layers[key].on('click',function(){
+              var html = layers[key]._popup._content;
+              var value = html.match(/<span class="popup-title">(.+)<\/span>/)[1];
+              ga('send', 'event', 'CLICK', 'Click', 'MapsMarker', value);
+          },1000);
+        }
+      })
+
+    },1000);
+
+    
 
   }
 
   //set GA link event
-  $('a').map(function(key,item){
+  setTimeout(function(){
+    $('a').map(function(key,item){
 
-    var jitem = $(item);
-    if(jitem.parents('#navigation')){
-      jitem.click(function(){
-        ga('send', 'event', 'CLICK', 'Click', 'Nav', jitem.attr('href'));
-      });
-      
-    }else if(jitem.parents('.panel-pane')){
-      jitem.click(function(){
-        console.log(jitem);
-        var class_name = $(item).parents('.panel-pane').attr('class');
-        var eventLabel = class_name.match(/pane-views pane-([^ ]+)/)[1];
-        ga('send', 'event', 'CLICK', 'Click', eventLabel , jitem.attr('href'));
-        return false;
-      });
-    }
+      var jitem = $(item);
+      if(jitem.parents('#navigation')){
+        jitem.click(function(){
+          ga('send', 'event', 'CLICK', 'Click', 'Nav', jitem.attr('href'));
+        });
+        
+      }else if(jitem.parents('.panel-pane')){
+        jitem.click(function(){
+          var class_name = $(item).parents('.panel-pane').attr('class');
+          var eventLabel = class_name.match(/pane-views pane-([^ ]+)/)[1];
+          ga('send', 'event', 'CLICK', 'Click', eventLabel , jitem.attr('href'));
+          return false;
+        });
+      }
 
-    console.log(jitem);
-  });
+    });
+  },1000);
+  
   
   var $w = $(window);
   var $d = $(document);
@@ -58,7 +61,6 @@ jQuery(document).ready(function($){
 
   var isSidr = false;
   
-
   onResize();
   $w.resize(onResize);
 
@@ -80,8 +82,9 @@ jQuery(document).ready(function($){
     $ppt.css({'height': $w.height()>pptRealHeight?$w.height():pptRealHeight});
     $rh.css({'height': $w.height()});
 
+
     if($w.width()<767 && !isSidr){
-      $('.header__logo').sidr();
+      $('.navTrigger').sidr();
       // $('a.header__logo').attr('href','javascript: void(0);');
       $('#sidr').append($('#navigation'));
       isSidr = true;
@@ -199,7 +202,7 @@ jQuery(document).ready(function($){
         var $target = $('#'+$(this).attr('href').split('#')[1]);
         tmt = parseInt($target.css('margin-top').split('px')[0]);
         var scrollAmount = $target.offset().top-90;
-        console.log(scrollAmount);
+        // console.log(scrollAmount);
         $('body').animate({scrollTop: scrollAmount},1000);
         return false;  
       })
