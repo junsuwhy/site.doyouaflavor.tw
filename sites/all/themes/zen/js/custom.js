@@ -5,17 +5,20 @@ jQuery(document).ready(function($){
 
       // set GA code
     layers = Drupal.settings.leaflet[0].lMap._layers;
-    Object.keys(layers).map(function(key){
-      if(key.match(/^\d+$/) ){
-          layers[key].on('click',function(){
-            var html = layers[key]._popup._content;
-            var value = html.match(/<span class="popup-title">(.+)<\/span>/)[1];
-            console.log("ga");
-            console.log(value);
-            ga('send', 'event', 'CLICK', 'Click-MapsMarker', value);
-        });
-      }
-    })
+    setTimeout(function(){
+      Object.keys(layers).map(function(key){
+        if(key.match(/^\d+$/) ){
+            layers[key].on('click',function(){
+              var html = layers[key]._popup._content;
+              var value = html.match(/<span class="popup-title">(.+)<\/span>/)[1];
+              console.log("ga");
+              console.log(value);
+              ga('send', 'event', 'CLICK', 'Click-MapsMarker', value);
+          });
+        }
+      });
+    },1000);
+    
 
 
     
@@ -36,7 +39,6 @@ jQuery(document).ready(function($){
         var class_name = $(item).parents('.panel-pane').attr('class');
         var eventLabel = class_name.match(/pane-home-([^ ]+)/)[1];
         ga('send', 'event', 'CLICK', 'Click-' + eventLabel, jitem.attr('href'));
-        return false;
       });
     }
 
