@@ -25,10 +25,10 @@
             jitem.click(function(){
               mix_track_link('CLICK', 'slide-banner', jitem.attr('href'));
             });
-          }else if(jitem.parents('.panel-pane.panel-views').length > 0){
+          }else if(jitem.parents('.panel-pane.pane-views').length > 0){
             jitem.click(function(){
               var class_name = jitem.parents('.panel-pane').attr('class');
-              var eventLabel = class_name.match(/panel-pane panel-views pane-([^ ]+)/)[1];
+              var eventLabel = class_name.match(/panel-pane pane-views pane-([^ ]+)/)[1];
               mix_track_link('CLICK', eventLabel, jitem.attr('href'));
             });
           }
