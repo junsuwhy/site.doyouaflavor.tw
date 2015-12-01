@@ -14,14 +14,35 @@
           stop.global_time++;
         },1000);
 
-        $('a').click(function(){
-          var _href = $(this).attr('href');
-          console.log(_href);
+        $('a').each(function(){
+          jitem = $(this);
+          if(jitem.parents('#navigation').length > 0){
+            jitem.click(function(){
+              mix_track_link('CLICK', 'Nav', jitem.attr('href'));
+            });
+            
+          }else if(jitem.parents('.slick-slide').length > 0){
+            jitem.click(function(){
+              mix_track_link('CLICK', 'slide-banner', jitem.attr('href'));
+            });
+          }else if(jitem.parents('.panel-pane.panel-views').length > 0){
+            jitem.click(function(){
+              var class_name = $(item).parents('.panel-pane').attr('class');
+              var eventLabel = class_name.match(/panel-pane panel-views pane-([^ ]+)/)[1];
+              mix_track_link('CLICK', eventLabel, jitem.attr('href'));
+            });
+          }
+        });
+
+        function mix_track_link( event, parent, _href){
+          console.log(event, parent, _href);
           mixpanel.track("outbound",{
+            "section": parent,
             "href":_href,
             "second":stop.global_time
           });
-        });
+        }
+
         window.onbeforeunload = function (e) {
           // var message = "Your confirmation message goes here.",
           // e = e || window.event;

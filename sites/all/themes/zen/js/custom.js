@@ -38,10 +38,10 @@ jQuery(document).ready(function($){
       jitem.click(function(){
         ga('send', 'event', 'CLICK', 'Click-slide-banner', jitem.attr('href'));
       });
-    }else if(jitem.parents('.panel-pane').length > 0){
+    }else if(jitem.parents('.panel-pane.panel-views').length > 0){
       jitem.click(function(){
         var class_name = $(item).parents('.panel-pane').attr('class');
-        var eventLabel = class_name.match(/pane-home-([^ ]+)/)[1];
+        var eventLabel = class_name.match(/panel-pane panel-views pane-([^ ]+)/)[1];
         ga('send', 'event', 'CLICK', 'Click-' + eventLabel, jitem.attr('href'));
       });
     }
