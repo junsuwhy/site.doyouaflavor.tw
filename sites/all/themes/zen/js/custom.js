@@ -34,7 +34,11 @@ jQuery(document).ready(function($){
         ga('send', 'event', 'CLICK', 'Click-Nav', jitem.attr('href'));
       });
       
-    }else if(jitem.parents('.panel-pane')){
+    }else if(jitem.parents('.slick-slide').length > 0){
+      jitem.click(function(){
+        ga('send', 'event', 'CLICK', 'Click-slide-banner', jitem.attr('href'));
+      });
+    }else if(jitem.parents('.panel-pane').length > 0){
       jitem.click(function(){
         var class_name = $(item).parents('.panel-pane').attr('class');
         var eventLabel = class_name.match(/pane-home-([^ ]+)/)[1];
@@ -154,7 +158,7 @@ jQuery(document).ready(function($){
 
   $('.home-scroll-button').click(function(){
     var scrollAmount = $hlmw.offset().top;
-    $('body').animate({scrollTop: scrollAmount},1000);
+    $("body, html").animate({scrollTop: scrollAmount},1000);
   })
 
 
@@ -203,7 +207,7 @@ jQuery(document).ready(function($){
         tmt = parseInt($target.css('margin-top').split('px')[0]);
         var scrollAmount = $target.offset().top-90;
         // console.log(scrollAmount);
-        $('body').animate({scrollTop: scrollAmount},1000);
+        $("body, html").animate({scrollTop: scrollAmount},1000);
         return false;  
       })
     })
@@ -345,6 +349,10 @@ jQuery(document).ready(function($){
             var $data = $(mfpResponse.data);
             mfpResponse.data = $data.find('#content');
             mfpResponse.data.append(fileref);
+            $data.find('a').click(function(){
+              jitem = $(this);
+              ga('send', 'event', 'CLICK', 'Click-popup-cta', jitem.attr('href'));
+            });
 
 
             // .prepend($title);
