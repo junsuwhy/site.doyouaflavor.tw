@@ -15,7 +15,7 @@
         },1000);
 
         $('a').each(function(){
-          jitem = $(this);
+          var jitem = $(this);
           if(jitem.parents('#navigation').length > 0){
             jitem.click(function(){
               mix_track_link('CLICK', 'Nav', jitem.attr('href'));
@@ -27,7 +27,7 @@
             });
           }else if(jitem.parents('.panel-pane.panel-views').length > 0){
             jitem.click(function(){
-              var class_name = $(item).parents('.panel-pane').attr('class');
+              var class_name = jitem.parents('.panel-pane').attr('class');
               var eventLabel = class_name.match(/panel-pane panel-views pane-([^ ]+)/)[1];
               mix_track_link('CLICK', eventLabel, jitem.attr('href'));
             });
